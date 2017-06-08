@@ -4,11 +4,15 @@
 <link rel="import" href="../iron-pages/iron-pages.html">
 <link rel="import" href="../paper-stepper/paper-stepper.html">
 <link rel="import" href="gene-crossover-1.html">
+<link rel="import" href="gene-crossover-2.html">
+<link rel="import" href="gene-crossover-3.html">
+<link rel="import" href="gene-crossover-4.html">
+<link rel="import" href="gene-crossover-5.html">
 
 <dom-module id="gene-crossover">
   <template>
     <style>
-      :host {
+       :host {
         display: block;
       }
     </style>
@@ -16,14 +20,13 @@
     <!--Pages-->
     <iron-pages selected="[[activePage]]">
       <gene-crossover-1></gene-crossover-1>
-      <div>Two</div>
-      <div>Three</div>
-      <div> four </div>
-      <div> five </div>
-      <div> six </div>
+      <gene-crossover-2></gene-crossover-2>
+      <gene-crossover-3></gene-crossover-3>
+      <gene-crossover-4></gene-crossover-4>
+      <gene-crossover-5></gene-crossover-5>
     </iron-pages>
 
-    
+
     <!--Counter-->
     <template is="dom-if" if="[[count]]">
       <paper-stepper selected="{{activePage}}" progress-bar>
@@ -47,7 +50,7 @@
           value: 0
         }
       },
-      _countToArray: function(count) {
+      _countToArray: function (count) {
         var array = [];
         if (count) {
           for (i = 0; i < count; i++) {
@@ -57,7 +60,7 @@
         console.log(array);
         return array;
       },
-      ready: function() {
+      ready: function () {
         var root = this;
         var ironPages = root.$$('iron-pages');
         if (ironPages.children) {
