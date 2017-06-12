@@ -152,47 +152,49 @@
                 tl.set([setoneleftfour, setoneleftthree, setonelefttwo, setonerightfour, setonerightthree,
                     setonerighttwo
                 ], {
-                    visibility: "hidden"
+                    display: "none"
                 });
 
                 //Animate Start
-                tl.to([setoneleftone], .1, {
-                        visibility: "hidden",
+                tl.to([setoneleftone], .2, {
+                        x: "+=5",
+                        alpha: 0,
                     })
-                    .to([setonerightone], .1, {
-                        visibility: "hidden",
+                    .to([setonerightone], .2, {
+                        x: "-=5",
+                        alpha: 0,
                     });
 
                 // Animate Left
                 lefttl.to([setonelefttwo], .1, {
                         x: "+=10",
-                        visibility: "visible",
-                        visibility: "hidden"
+                        display: "block",
+                        display: "none"
                     })
                     .to([setoneleftthree], .3, {
                         x: "+=10",
-                        visibility: "visible",
-                        visibility: "hidden"
+                        display: "block",
+                        display: "none"
                     })
                     .to([setoneleftfour], .3, {
                         x: "+=10",
-                        visibility: "visible"
+                        display: "block"
                     });
 
                 // Animate Right
                 righttl.to([setonerighttwo], .1, {
                         x: "-=10",
-                        visibility: "visible",
-                        visibility: "hidden"
+                        display: "block",
+                        display: "none"
                     })
                     .to([setonerightthree], .3, {
                         x: "-=10",
-                        visibility: "visible",
-                        visibility: "hidden"
+                        display: "block",
+                        display: "none"
                     })
                     .to([setonerightfour], .3, {
                         x: "-=10",
-                        visibility: "visible"
+                        display: "block"
                     });
 
                 tl.pause();
