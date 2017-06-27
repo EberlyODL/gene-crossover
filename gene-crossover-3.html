@@ -1,5 +1,6 @@
 <link rel="import" href="../lrndesign-animationctrl/lrndesign-animationctrl.html">
 <link rel="import" href="../greensock-cdn/greensock-cdn.html">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 
 <dom-module id="gene-crossover-3">
     <template>
@@ -7,12 +8,31 @@
              :host {
                 display: block;
             }
+
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6 {
+                font-family: 'Open Sans', sans-serif;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                color: #6D6E71;
+                text-align: center;
+            }
+
+            p {
+                font-family: 'Open Sans', sans-serif;
+            }
         </style>
 
         <lrndesign-animationctrl>
             <lrndesign-animationctrl-button name="play" icon="play"></lrndesign-animationctrl-button>
             <lrndesign-animationctrl-button name="replay" icon="replay"></lrndesign-animationctrl-button>
         </lrndesign-animationctrl>
+
+        <h1>Gene Crossover</h1>
 
         <p>This exchange of genetic material results in chromatids that are comprised of both maternal and paternal genes. Along
             human chromsomes, for example, an average of 2 or 3 cross-over events occurs per chromosome. This exchange of

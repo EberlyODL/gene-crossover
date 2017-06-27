@@ -1,5 +1,6 @@
 <link rel="import" href="../lrndesign-animationctrl/lrndesign-animationctrl.html">
 <link rel="import" href="../greensock-cdn/greensock-cdn.html">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 
 <dom-module id="gene-crossover-4">
     <template>
@@ -7,12 +8,31 @@
              :host {
                 display: block;
             }
+
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6 {
+                font-family: 'Open Sans', sans-serif;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                color: #6D6E71;
+                text-align: center;
+            }
+
+            p {
+                font-family: 'Open Sans', sans-serif;
+            }
         </style>
 
         <lrndesign-animationctrl>
             <lrndesign-animationctrl-button name="play" icon="play"></lrndesign-animationctrl-button>
             <lrndesign-animationctrl-button name="replay" icon="replay"></lrndesign-animationctrl-button>
         </lrndesign-animationctrl>
+
+        <h1>Gene Crossover</h1>
 
         <p>This screen shows the end result of meiosis with crossing over. Notice that these chromatids - each with a unique
             combination of genes have segregated into 4 different gametes.</p>
@@ -366,35 +386,35 @@
                         x: "-=5",
                         display: "none"
                     })
-                     .to([setthreeleftsix], .5, {
-                         x: "-=5",
+                    .to([setthreeleftsix], .5, {
+                        x: "-=5",
                         display: "block"
                     })
-                     .to([setthreeleftsix], .1, {
-                         x: "-=5",
+                    .to([setthreeleftsix], .1, {
+                        x: "-=5",
                         display: "none"
                     })
-                     .to([setthreeleftseven], .5, {
-                         x: "-=5",
+                    .to([setthreeleftseven], .5, {
+                        x: "-=5",
                         display: "block"
                     })
-                     .to([setthreeleftseven], .1, {
-                         x: "-=5",
+                    .to([setthreeleftseven], .1, {
+                        x: "-=5",
                         display: "none"
                     })
-                     .to([setthreelefteight], .5, {
-                         x: "-=5",
+                    .to([setthreelefteight], .5, {
+                        x: "-=5",
                         display: "block"
                     })
-                     .to([setthreelefteight], .1, {
-                         x: "-=5",
+                    .to([setthreelefteight], .1, {
+                        x: "-=5",
                         display: "none"
                     })
-                     .to([setthreeleftnine, paternalrecombinanttext], .5, {
+                    .to([setthreeleftnine, paternalrecombinanttext], .5, {
                         display: "block"
                     });
 
-                    //Animate Right
+                //Animate Right
                 tlright.to([setthreerightone], .1, {
                         x: "+=5",
                         display: "none"
@@ -431,32 +451,32 @@
                         x: "+=5",
                         display: "none"
                     })
-                     .to([setthreerightsix], .5, {
-                         x: "+=5",
+                    .to([setthreerightsix], .5, {
+                        x: "+=5",
                         display: "block"
                     })
-                     .to([setthreerightsix], .1, {
-                         x: "+=5",
+                    .to([setthreerightsix], .1, {
+                        x: "+=5",
                         display: "none"
                     })
-                     .to([setthreerightseven], .5, {
-                         x: "+=5",
+                    .to([setthreerightseven], .5, {
+                        x: "+=5",
                         display: "block"
                     })
-                     .to([setthreerightseven], .1, {
-                         x: "+=5",
+                    .to([setthreerightseven], .1, {
+                        x: "+=5",
                         display: "none"
                     })
-                     .to([setthreerighteight], .5, {
-                         x: "+=5",
+                    .to([setthreerighteight], .5, {
+                        x: "+=5",
                         display: "block"
                     })
-                     .to([setthreerighteight], .1, {
-                         x: "+=5",
+                    .to([setthreerighteight], .1, {
+                        x: "+=5",
                         display: "none"
                     })
                     .to([setthreerightnine], .5, {
-                         x: "+=5",
+                        x: "+=5",
                         display: "block"
                     });
 
