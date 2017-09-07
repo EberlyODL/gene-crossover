@@ -27,11 +27,6 @@
             }
         </style>
 
-        <lrndesign-animationctrl>
-            <lrndesign-animationctrl-button name="play" icon="play"></lrndesign-animationctrl-button>
-            <lrndesign-animationctrl-button name="replay" icon="replay"></lrndesign-animationctrl-button>
-        </lrndesign-animationctrl>
-
         <h1>Gene Crossover</h1>
 
         <p>Crossing over occurs when homologous chromosomes come together in synapsis. While in a tetrad, the chromatids align
@@ -140,8 +135,39 @@
 
             properties: {
                 tl: {
-                    type: Object
+                  type: Object,
+                  value: null
                 },
+                selected: {
+                  type: Boolean,
+                  value: false
+                },
+                animationReady: {
+                  type: Boolean,
+                  value: false
+                }
+            },
+
+            observers: [
+              '_selectedChanged(selected, animationReady)'
+            ],
+            _selectedChanged: function (selected, animationReady) {
+              if (!animationReady) {
+                return;
+              }
+              if (selected) {
+                this.tl.play();
+                this.lefttl.play();
+                this.righttl.play();
+              }
+              else {
+                this.tl.progress(0);
+                this.lefttl.progress(0);
+                this.righttl.progress(0);
+                this.tl.pause();
+                this.lefttl.pause();
+                this.righttl.pause();
+              }
             },
 
             ready: function () {
@@ -217,29 +243,14 @@
                         display: "block"
                     });
 
-                tl.pause();
-                lefttl.pause();
-                righttl.pause();
+                this.tl = tl;
+                this.lefttl = lefttl;
+                this.righttl = righttl;
+                this.animationReady = true;
 
-                // listen for button clicks and play and pause the animation
-                this.$$('lrndesign-animationctrl').addEventListener('lrndesign-animationctrl-click',
-                    function (e) {
-                        var name = e.detail.button;
-                        if (name === 'play') {
-                            tl.play();
-                            lefttl.play();
-                            righttl.play();
-                        }
-                        if (name === 'replay') {
-                            tl.progress(0);
-                            lefttl.progress(0);
-                            righttl.progress(0);
-                            tl.pause();
-                            lefttl.pause();
-                            righttl.pause();
-                        }
-                    });
-
+                this.tl.pause();
+                this.lefttl.pause();
+                this.righttl.pause();
             }
         });
     </script>

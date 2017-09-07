@@ -27,11 +27,6 @@
             }
         </style>
 
-        <lrndesign-animationctrl>
-            <lrndesign-animationctrl-button name="play" icon="play"></lrndesign-animationctrl-button>
-            <lrndesign-animationctrl-button name="replay" icon="replay"></lrndesign-animationctrl-button>
-        </lrndesign-animationctrl>
-
         <h1>Gene Crossover</h1>
 
         <p>This screen shows the end result of meiosis with crossing over. Notice that these chromatids - each with a unique
@@ -302,6 +297,36 @@
                 tl: {
                     type: Object
                 },
+                selected: {
+                    type: Boolean,
+                    value: false
+                },
+                animationReady: {
+                    type: Boolean,
+                    value: false
+                }
+            },
+
+            observers: [
+              '_selectedChanged(selected, animationReady)'
+            ],
+            _selectedChanged: function (selected, animationReady) {
+              if (!animationReady) {
+                return;
+              }
+              if (selected) {
+                this.tl.play();
+                this.tlleft.play();
+                this.tlright.play();
+              }
+              else {
+                this.tl.progress(0);
+                this.tlleft.progress(0);
+                this.tlright.progress(0);
+                this.tl.pause();
+                this.tlleft.pause();
+                this.tlright.pause();
+              }
             },
 
             ready: function () {
@@ -483,25 +508,10 @@
                 tl.pause();
                 tlleft.pause();
                 tlright.pause();
-
-                // listen for button clicks and play and pause the animation
-                this.$$('lrndesign-animationctrl').addEventListener('lrndesign-animationctrl-click',
-                    function (e) {
-                        var name = e.detail.button;
-                        if (name === 'play') {
-                            tl.play();
-                            tlleft.play();
-                            tlright.play();
-                        }
-                        if (name === 'replay') {
-                            tl.progress(0);
-                            tlleft.progress(0);
-                            tlright.progress(0);
-                            tl.pause();
-                            tlleft.pause();
-                            tlright.pause();
-                        }
-                    });
+                this.tl = tl;
+                this.tlleft = tlleft;
+                this.tlright = tlright;
+                this.animationReady = true;
 
             }
         });

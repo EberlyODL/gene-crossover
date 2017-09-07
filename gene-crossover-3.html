@@ -27,11 +27,6 @@
             }
         </style>
 
-        <lrndesign-animationctrl>
-            <lrndesign-animationctrl-button name="play" icon="play"></lrndesign-animationctrl-button>
-            <lrndesign-animationctrl-button name="replay" icon="replay"></lrndesign-animationctrl-button>
-        </lrndesign-animationctrl>
-
         <h1>Gene Crossover</h1>
 
         <p>This exchange of genetic material results in chromatids that are comprised of both maternal and paternal genes. Along
@@ -193,6 +188,30 @@
                 tl: {
                     type: Object
                 },
+                selected: {
+                    type: Boolean,
+                    value: false
+                },
+                animationReady: {
+                    type: Boolean,
+                    value: false
+                }
+            },
+
+            observers: [
+              '_selectedChanged(selected, animationReady)'
+            ],
+            _selectedChanged: function (selected, animationReady) {
+              if (!animationReady) {
+                return;
+              }
+              if (selected) {
+                this.tl.play();
+              }
+              else {
+                this.tl.progress(0);
+                this.tl.pause();
+              }
             },
 
             ready: function () {
@@ -225,7 +244,7 @@
                     display: "none"
                 });
 
-                // Animate 
+                // Animate
                 tl.to([settwoleftone, settworightone], .5, {
                         display: "none"
                     })
@@ -257,20 +276,9 @@
                         x: "+=10"
                     });
 
-                tl.pause();
-
-                // listen for button clicks and play and pause the animation
-                this.$$('lrndesign-animationctrl').addEventListener('lrndesign-animationctrl-click',
-                    function (e) {
-                        var name = e.detail.button;
-                        if (name === 'play') {
-                            tl.play();
-                        }
-                        if (name === 'replay') {
-                            tl.progress(0);
-                            tl.pause();
-                        }
-                    });
+                this.tl = tl;
+                this.tl.pause();
+                this.animationReady = true;
 
             }
         });

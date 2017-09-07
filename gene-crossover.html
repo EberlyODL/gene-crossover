@@ -19,11 +19,11 @@
 
     <!--Pages-->
     <iron-pages selected="[[activePage]]">
-      <gene-crossover-1></gene-crossover-1>
-      <gene-crossover-2></gene-crossover-2>
-      <gene-crossover-3></gene-crossover-3>
-      <gene-crossover-4></gene-crossover-4>
-      <gene-crossover-5></gene-crossover-5>
+      <gene-crossover-1 selected="[[_isActive(activePage, 0)]]"></gene-crossover-1>
+      <gene-crossover-2 selected="[[_isActive(activePage, 1)]]"></gene-crossover-2>
+      <gene-crossover-3 selected="[[_isActive(activePage, 2)]]"></gene-crossover-3>
+      <gene-crossover-4 selected="[[_isActive(activePage, 3)]]"></gene-crossover-4>
+      <gene-crossover-5 selected="[[_isActive(activePage, 4)]]"></gene-crossover-5>
     </iron-pages>
 
 
@@ -49,6 +49,10 @@
           type: Number,
           value: 0
         }
+      },
+
+      _isActive: function (activePage, index) {
+        return activePage === index;
       },
       _countToArray: function (count) {
         var array = [];
